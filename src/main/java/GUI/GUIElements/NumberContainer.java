@@ -1,4 +1,4 @@
-package GUIElements;
+package GUI.GUIElements;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

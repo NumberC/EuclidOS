@@ -1,4 +1,4 @@
-package GUIElements;
+package GUI.GUIElements;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
