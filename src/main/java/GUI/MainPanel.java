@@ -23,7 +23,6 @@ import javax.swing.border.Border;
 import Core.FullEval;
 
 public class MainPanel extends JPanel {
-    JPanel header = new JPanel();
     JPanel content = new JPanel();
     JScrollPane scrollPane = new JScrollPane();
 
@@ -32,10 +31,6 @@ public class MainPanel extends JPanel {
 
     MainPanel(){
         setLayout(new BorderLayout());
-        Color headerColor = new Color(165, 28, 48);
-    
-        header.setPreferredSize(new Dimension(0, 30));
-        header.setBackground(headerColor);
 
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBackground(Color.WHITE);
@@ -46,7 +41,6 @@ public class MainPanel extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        add(header, BorderLayout.PAGE_START);
         add(scrollPane, BorderLayout.CENTER);        
     }
 
@@ -124,8 +118,8 @@ public class MainPanel extends JPanel {
 
     public static void main(String[] args){
         MainPanel main = new MainPanel();
-        
         JFrame frame = new JFrame();
+
         frame.add(main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 300); 
