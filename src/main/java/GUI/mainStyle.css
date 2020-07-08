@@ -1,0 +1,57 @@
+* {
+    -fx-high-bg: black;
+    -fx-high-txt: white;
+}
+
+.root{
+    -fx-background-color: white;
+}
+
+.text-field{
+    -fx-background-insets:  0 0 -1 -1, 0 0 0 0, 0 -1 3 -1;
+    -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+}
+
+.chart-plot-background {
+    -fx-background-color: white;
+}
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.highSolid{
+    -fx-background-color: -fx-high-bg;
+    -fx-text-fill: -fx-high-txt;
+}
+
+.highLbl:focused{
+    -fx-background-color: -fx-high-bg;
+    -fx-text-fill: -fx-high-txt;
+}
+
+.iconBtn{
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-background-radius: 10px;
+}
+
+.iconBtn:focused {
+    -fx-effect: dropshadow(gaussian, rgba(200,200,200,0.75), 10, 0, 0, 5);
+}
+
+#mainBtn{
+    -fx-background-color: rgb(255,128,128);
+    -fx-background-image: url("/Resources/Main@10x.png");
+}
+
+#graphingBtn{
+    -fx-background-color: rgb(255,242,128);
+    -fx-background-image: url("/Resources/Graph@10x.png");
+}
