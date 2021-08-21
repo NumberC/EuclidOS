@@ -83,7 +83,6 @@ void simpleParser(string& s, smatch m) {
 	s = s.substr(0, split_on) + to_string(num) + s.substr(split_on + m.length());
 }
 
-// 100000*((5*6)+34/6-(32+5-9/3))/6 works but not: ((5*6)+34/6-(32+5-9/3))/6*100000
 double advancedParser(string s){
 	regex parantheses = regex("\\(([^()]+)\\)");
     regex multDivide = regex("([0-9]\\d*(\\.\\d+)?)(\\*|\\/)([0-9]\\d*(\\.\\d+)?)");
