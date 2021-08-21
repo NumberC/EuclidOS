@@ -5,5 +5,7 @@
 *.classpath
 *.mf
 
+build/
+
 #License
 LICENSE

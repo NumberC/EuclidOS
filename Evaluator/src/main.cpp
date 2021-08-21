@@ -5,8 +5,9 @@
 #include <string>
 #include <regex>
 
-#include <main.h>
-#include "../../include/Evaluator/main.h"
+#include <chrono>
+
+//#include <main.h>
 
 using namespace std;
 
@@ -78,14 +79,15 @@ void simpleParser(string& s, smatch m) {
 	double secondNumber = atof(m[4].str().c_str());
 	
 	double num = polynomialEvaluator({firstNumber, operation*1.0, secondNumber});
-
+    
 	s = s.substr(0, split_on) + to_string(num) + s.substr(split_on + m.length());
 }
 
+// 100000*((5*6)+34/6-(32+5-9/3))/6 works but not: ((5*6)+34/6-(32+5-9/3))/6*100000
 double advancedParser(string s){
 	regex parantheses = regex("\\(([^()]+)\\)");
-    regex multDivide = regex("([1-9]\\d*(\\.\\d+)?)(\\*|\\/)([1-9]\\d*(\\.\\d+)?)");
-    regex addSubtract = regex("([1-9]\\d*(\\.\\d+)?)(\\+|\\-)([1-9]\\d*(\\.\\d+)?)");
+    regex multDivide = regex("([0-9]\\d*(\\.\\d+)?)(\\*|\\/)([0-9]\\d*(\\.\\d+)?)");
+    regex addSubtract = regex("([0-9]\\d*(\\.\\d+)?)(\\+|\\-)([0-9]\\d*(\\.\\d+)?)");
 	smatch m;
 
 	while(regex_search(s, m, parantheses)){
@@ -100,11 +102,24 @@ double advancedParser(string s){
     return atof(s.c_str());
 }
 
+void getPerformance(void (*function) ()){
+    const auto now = chrono::system_clock::now().time_since_epoch(); 
+    function();
+    const auto after = chrono::system_clock::now().time_since_epoch(); 
+
+    cout << chrono::duration_cast<chrono::milliseconds>(after - now).count() << endl; 
+}
+
+void test1(){advancedParser("((5*6)+34/6-(32+5-9/3))/6");}
+void test2(){polynomialEvaluator({polynomialEvaluator({polynomialEvaluator({5, multiply, 6}), add, 34, divide, 6, subtract, polynomialEvaluator({32, add, 5, subtract, 9, divide, 3})}), divide, 6});}
+
 // \(([^()]+)\)
 int main(){
     vector<double> a {8, divide, 7, add, 5, subtract, 4};
     cout << polynomialEvaluator(a) << endl;
 	
-	//cout << advancedParser("5+6") << endl;
+	cout << advancedParser("((5*6)+34/6-(32+5-9/3))/6*100000") << endl;
+    //getPerformance(test1);
+    //getPerformance(test2);
     return 0;
 }

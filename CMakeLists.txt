@@ -1,6 +1,9 @@
+cmake_minimum_required(VERSION 3.18)
+
 project(EuclidOS)
 
-include_directories(/include/)
-add_subdirectory(${PROJECT_NAME} Evaluator)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
-add_executable(${PROJECT_NAME} Evaluator/src/main.cpp)
+add_subdirectory(Evaluator)
+
+add_executable(${PROJECT_NAME} Evaluator/src/main.cpp Evaluator/test/test.cpp)
