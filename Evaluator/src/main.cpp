@@ -5,6 +5,9 @@
 #include <string>
 #include <regex>
 
+#include <main.h>
+#include "../../include/Evaluator/main.h"
+
 using namespace std;
 
 enum Operation {add, subtract, multiply, divide, raise};
@@ -101,5 +104,7 @@ double advancedParser(string s){
 int main(){
     vector<double> a {8, divide, 7, add, 5, subtract, 4};
     cout << polynomialEvaluator(a) << endl;
+	
+	//cout << advancedParser("5+6") << endl;
     return 0;
 }

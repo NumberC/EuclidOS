@@ -1,12 +1,24 @@
 #include <iostream>
 #include <chrono>
 
+#include "../../include/Evaluator/main.h"
+
 using namespace std;
 
-int main(){
+void getPerformance(void (*function) ()){
     const auto now = chrono::system_clock::now().time_since_epoch(); 
-
+    function();
     const auto after = chrono::system_clock::now().time_since_epoch(); 
 
-    cout << chrono::duration_cast<chrono::milliseconds>(after - now).count() << endl;
+    cout << chrono::duration_cast<chrono::milliseconds>(after - now).count() << endl; 
+}
+
+void testStringParser(){advancedParser("5+6");}
+//void testEvaluator(){polynomialEvaluator({5, add, 6});}
+
+int main(){
+    //getPerformance(testStringParser);
+    //getPerformance(testEvaluator);
+    //cout << polynomialEvaluator(5, 1, 6) << endl;
+    cout << "hi" << endl;
 }
