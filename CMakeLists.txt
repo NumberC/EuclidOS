@@ -6,4 +6,4 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(Evaluator)
 
-add_executable(${PROJECT_NAME} Evaluator/src/main.cpp Evaluator/test/test.cpp)
+add_executable(${PROJECT_NAME} Evaluator/src/main.cpp Evaluator/test/test.cpp Evaluator/src/parser.cpp)

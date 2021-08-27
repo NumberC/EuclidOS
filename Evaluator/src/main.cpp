@@ -7,11 +7,9 @@
 
 #include <chrono>
 
-//#include <main.h>
+#include <Evaluator/main.h>
 
 using namespace std;
-
-enum Operation {add, subtract, multiply, divide, raise};
 
 double binomialEvaluator(double a, Operation o, double b){
     //TODO: use smart pointers
@@ -101,24 +99,17 @@ double advancedParser(string s){
     return atof(s.c_str());
 }
 
-void getPerformance(void (*function) ()){
-    const auto now = chrono::system_clock::now().time_since_epoch(); 
-    function();
-    const auto after = chrono::system_clock::now().time_since_epoch(); 
+void advanced(){advancedParser("((5*6)+34/6-(32+5-9/3))/6*100000");}
 
-    cout << chrono::duration_cast<chrono::milliseconds>(after - now).count() << endl; 
-}
-
-void test1(){advancedParser("((5*6)+34/6-(32+5-9/3))/6");}
-void test2(){polynomialEvaluator({polynomialEvaluator({polynomialEvaluator({5, multiply, 6}), add, 34, divide, 6, subtract, polynomialEvaluator({32, add, 5, subtract, 9, divide, 3})}), divide, 6});}
-
-// \(([^()]+)\)
 int main(){
     vector<double> a {8, divide, 7, add, 5, subtract, 4};
     cout << polynomialEvaluator(a) << endl;
-	
 	cout << advancedParser("((5*6)+34/6-(32+5-9/3))/6*100000") << endl;
-    //getPerformance(test1);
-    //getPerformance(test2);
+
+    for(int i = 0; i < 1; i++){
+        string test2;
+        cin >> test2;
+        cout << advancedParser(test2) << endl;
+    }
     return 0;
 }
