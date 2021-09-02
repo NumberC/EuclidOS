@@ -12,3 +12,12 @@ void getPerformance(void (*function) ()){
 
     cout << chrono::duration_cast<chrono::milliseconds>(after - now).count() << endl; 
 }
+
+void advanced(){advancedParser("((5*6)+34/6-(32+5-9/3))/6*100000");}
+void subAdvanced(){advancedParser("5*6");}
+void listTest(){polynomialEvaluator({5, multiply, 6});}
+
+void runTests(){
+    getPerformance(subAdvanced);
+    getPerformance(listTest);
+}
