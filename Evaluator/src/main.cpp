@@ -5,6 +5,7 @@
 #include <chrono>
 
 #include <Evaluator/main.h>
+#include <Evaluator/Node.h>
 
 using namespace std;
 
@@ -49,16 +50,24 @@ double polynomialEvaluator(vector<double> a){
     return currentValue;
 }
 
-int main(){
-    vector<double> a {8, divide, 7, add, 5, subtract, 4};
-    cout << polynomialEvaluator(a) << endl;
-	cout << advancedParser("((5*6)+34/6-(32+5-9/3))/6*100000") << endl;
+void test(){
+    Addition ad(5, 6);
+    Multiplication a(60, 3);
+    Multiplication b(a.evaluate(), 60);
+    Multiplication c(17, 60);
+    Equation eq = Equation({&b, &c});
+    eq.evaluate();
+}
 
-    for(int i = 0; i < 1; i++){
-        string test2;
-        cin >> test2;
-        cout << advancedParser(test2) << endl;
-    }
-    runTests();
+int main(){
+    Variable x(3);
+    Addition ad(3, 7);
+    
+    Equation eq = Equation({&x, &ad});
+    cout << eq.evaluate() << endl;
+    // Sigma sig = Sigma(1, 10, eq);
+    // cout << sig.evaluate() << endl;
+    
+    //runNodePerformanceTests();
     return 0;
 }
