@@ -2,8 +2,11 @@
 #include <chrono>
 
 #include <Evaluator/main.h>
+#include <Evaluator/Node.h>
 
 using namespace std;
+
+// Code here is mainly to compare performance between various methods, techniques, and algorithms
 
 void getPerformance(void (*function) ()){
     const auto now = chrono::system_clock::now().time_since_epoch(); 
@@ -18,7 +21,12 @@ void subAdvanced(){advancedParser("5*6");}
 void listTest(){polynomialEvaluator({5, multiply, 6});}
 
 
-void runTests(){
+void runPerformanceTests(){
     getPerformance(subAdvanced);
     getPerformance(listTest);
+    
+    Variable x(3);
+    Addition ad(5, 3);
+    Equation eq = Equation({ad, x});
+    std::cout << eq.evaluate() << std::endl;
 }

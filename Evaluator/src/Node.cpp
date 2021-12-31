@@ -1,24 +1,34 @@
 #include <Evaluator/Node.h>
 #include <math.h>
+#include <iostream>
 
 double EquationNode::evaluate(){return 1;}
+double EquationNode::evaluateWithValue(double x){
+    return evaluate();
+}
 
 Variable::Variable(){
 }
 
+// TODO: why do I need this?
 Variable::Variable(int x){
+    value = x;
+}
 
+void Variable::changeValue(double x){
+    value = x;
 }
 
 double Variable::evaluate(){
-    return 0;
+    std::cout << "Var Value: " << value << std::endl;
+    return value;
 }
 
 double Variable::evaluateWithValue(double x){
     return x;
 }
 
-Equation::Equation(vector<EquationNode*> components){
+Equation::Equation(vector<EquationNode> components){
     this->components = components;
 }
 
@@ -26,8 +36,8 @@ Equation::Equation(){}
 
 double Equation::evaluate(){
     double result = 0;
-    for(EquationNode* eq : components){
-        result += eq->evaluate();
+    for(EquationNode eq : components){
+        result += eq.evaluate();
     }
     return result;
 }
@@ -87,14 +97,22 @@ double Log::evaluate(){
     return log(a)/log(base);
 }
 
-Sigma::Sigma(double start, double n, Equation e){
+Sigma::Sigma(double start, double n, Variable x, Equation e){
     this->start = start;
     this->n = n;
     this->e = e;
+    this->x = x;
 }
 
 double Sigma::evaluate(){
     double sum = 0;
-    for(int i = start; i <= n; i++) sum += e.evaluate();
+    double originalValue = x.evaluate();
+    for(int i = start; i <= n; i++){
+        x.changeValue(i);
+        x.evaluate();
+        sum += e.evaluate();
+        std::cout << "Eq Value: " << e.evaluate() << std::endl;
+    }
+    x.changeValue(originalValue);
     return sum;
 }

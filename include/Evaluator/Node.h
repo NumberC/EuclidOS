@@ -8,24 +8,26 @@ using namespace std;
 class EquationNode{
     public:
         virtual double evaluate();
+        virtual double evaluateWithValue(double x);
         virtual ~EquationNode(){};
 };
 
 class Variable : public EquationNode{
     public:
+        double value;
         double evaluate();
+        void changeValue(double x);
         double evaluateWithValue(double x);
         Variable();
         Variable(int x);
-        
 };
 
 class Equation {
     private:
-        vector<EquationNode*> components;
+        vector<EquationNode> components;
     public:
         double evaluate();
-        Equation(vector<EquationNode*> components);
+        Equation(vector<EquationNode> components);
         Equation();
 };
 
@@ -34,7 +36,7 @@ class Addition : public EquationNode{
         double a;
         double b;
     public:
-        double evaluate() override;
+        double evaluate();
         Addition(double a, double b);
         
 };
@@ -99,14 +101,10 @@ class Sigma : public EquationNode{
     private:
         double start;
         double n;
+        Variable x;
         Equation e;
     public:
         double evaluate();
-        Sigma(double start, double n, Equation e);
+        Sigma(double start, double n, Variable x, Equation e);
 };
-
-
-
-void runNodePerformanceTests();
-
 #endif

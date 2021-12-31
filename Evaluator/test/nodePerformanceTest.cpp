@@ -1,6 +1,8 @@
 #include <Evaluator/Node.h>
 #include <Evaluator/main.h>
 
+// Code here is mainly to compare performance between various methods, techniques, and algorithms
+
 // 5*6-4/9*11+33
 void advancedNodeMaths(){
     Multiplication multA = Multiplication(5, 6);
@@ -16,10 +18,4 @@ void parseMaths(){
 
 void listMaths(){
     polynomialEvaluator({5, multiply, 6, subtract, 4, divide, 9, multiply, 11, add, 33});
-}
-
-void runNodePerformanceTests(){
-    getPerformance(advancedNodeMaths);
-    getPerformance(parseMaths);
-    getPerformance(listMaths);
 }

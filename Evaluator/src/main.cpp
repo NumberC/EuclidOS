@@ -62,12 +62,10 @@ void test(){
 int main(){
     Variable x(3);
     Addition ad(3, 7);
+    Equation e = Equation({x});
+    Sigma sig(1, 10, x, e);
+    cout << sig.evaluate() << endl;
     
-    Equation eq = Equation({&x, &ad});
-    cout << eq.evaluate() << endl;
-    // Sigma sig = Sigma(1, 10, eq);
-    // cout << sig.evaluate() << endl;
-    
-    //runNodePerformanceTests();
+    //runPerformanceTests();
     return 0;
 }
