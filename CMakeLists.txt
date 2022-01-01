@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.18)
-
 project(EuclidOS)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+add_subdirectory(Math/libs/cparse)
 
-add_subdirectory(Evaluator)
+# check_cxx_compiler_flag( "-std=c++11"   COMPILER_SUPPORTS_CXX11 )
 
-add_executable(${PROJECT_NAME} Evaluator/src/main.cpp Evaluator/src/Node.cpp Evaluator/src/parser.cpp Evaluator/test/test.cpp Evaluator/test/nodePerformanceTest.cpp) 
+add_executable(${PROJECT_NAME} Math/src/main.cpp)
+target_link_libraries(EuclidOS cparse)
