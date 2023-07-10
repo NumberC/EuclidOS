@@ -1,9 +1,13 @@
 # EuclidOS
 EuclidOS is a modern, free, and open-source graphing calculator OS. Currently, the OS can do basic arithmetics, store variables, and work with matrices. It can also graph, but only in y=mx+b form. Due to UI issues, graphing is currently unavailable.
 
-### EuclidOS can do Arithmetic, Graph Equations, and Edit Matrices
+### EuclidOS can do Arithmetic
 ![Main Screen](https://github.com/NumberC/EuclidOS/assets/47584014/446f362c-ed4f-4fb6-bbd4-f3cc027c8d04)
+
+### Graph Equations
 ![Graphing](https://github.com/NumberC/EuclidOS/assets/47584014/fc7be2c1-6042-45a6-86a3-b1ac6f82b258)
+
+### And Edit Matrices
 ![Matrix Editing](https://github.com/NumberC/EuclidOS/assets/47584014/2f3dbb4e-ac71-4066-bcfb-a8dc0160c1ff)
 
 
