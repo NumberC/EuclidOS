@@ -12,6 +12,13 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+javafx {
+    version = "20"
+    modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.fxml', 'javafx.media', 'javafx.swing', 'javafx.web', 'javafx.base' ]
 }
 
 repositories {
@@ -29,12 +36,12 @@ dependencies {
     testImplementation 'junit:junit:4.13'
 
     implementation 'com.google.code.gson:gson:2.8.6'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'net.objecthunter:exp4j:0.4.8'
-    compile group: 'org.ejml', name: 'ejml-all', version: '0.38'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation 'net.objecthunter:exp4j:0.4.8'
+    implementation group: 'org.ejml', name: 'ejml-all', version: '0.38'
 }
 
 application {
     // Define the main class for the application.
-    mainClassName = 'src/main/java/Core/Main.java'
+    mainClassName = 'src/main/java/GUI/MainGUI.java'
 }
